@@ -15,9 +15,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load model and vectorizer
-model = joblib.load("../model/sentiment_model.pkl")
-vectorizer = joblib.load("../model/vectorizer.pkl")
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model = joblib.load(os.path.join(BASE_DIR, "model", "sentiment_model.pkl"))
+vectorizer = joblib.load(os.path.join(BASE_DIR, "model", "vectorizer.pkl"))
 
 # Input format
 class TextInput(BaseModel):
